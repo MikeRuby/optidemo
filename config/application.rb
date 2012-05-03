@@ -57,3 +57,7 @@ module Optidemo
     config.assets.version = '1.0'
   end
 end
+
+# Create base64 code from images pull from CSS files.
+WebResourceBundler::Bundler.setup(Rails.root, Rails.env)
+ActionView::Base.send(:include, WebResourceBundler::RailsAppHelpers)
