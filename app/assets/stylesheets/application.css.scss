@@ -1,0 +1,409 @@
+@import "defaults";
+
+/* Content */
+
+#wrapper {
+	
+}
+
+#header {
+	height: 101px;
+	margin: 10px 10px 5px 10px;
+}
+
+#header-pages {
+	height: 86px;
+	margin: 10px 10px 5px 10px;
+}
+
+#content {
+	width: 100%;
+	margin-top: -100px;
+	padding-bottom: 10px;
+	min-height: 200px;
+	background-color: #FFF;
+	padding-top: 100px;
+}
+
+.shadow {
+	background: #FFF url(content-bg.png) no-repeat top center;
+}
+
+#logo {
+	margin-top: 10px;
+}
+
+#slider {
+	height: 400px;
+	margin-bottom: 40px;
+	position: relative;
+}
+
+.slider_text {
+	width: 300px;
+}
+
+#footer {
+	width: 100%;
+	color: #FFF;
+	padding: 20px 0;
+}
+
+#footer h1 {
+	text-shadow: 0px 1px 1px #000000;
+}
+
+#footer ul {
+	margin-top: 10px;
+	list-style: none;
+}
+
+#footer ul  li {
+	border-top: solid 1px #414141;
+	padding: 3px 0;
+}
+
+#footer ul.social-icons  li {
+	display: inline;
+	margin-right: 5px;
+	border: none;
+}
+
+#footer ul.social-icons {
+	margin-bottom: 20px;
+}
+
+#tail {
+	width: 100%;
+	min-height: 20px;
+	color: #000;
+	background-color: #FFF;
+	padding: 15px 0;
+	text-align: center;
+}
+
+a {
+	color: #2DA8F8;
+}
+
+a:hover {
+	color: #FF0000;
+}
+
+spacer {
+	height: 20px;
+}
+
+.main-section {
+	padding-top: 20px;
+	background-color: #FFF;
+	margin: 0px auto;
+}
+
+/* Headings */
+
+h1 {
+	font-size: 1.5em;
+}
+
+p {
+	margin: 10px 0;
+}
+
+/* Testimonials section */
+
+div.testimonials {
+	font: 20px/26px Georgia, Times, serif;
+	color: #3e4548;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+span.testimonial-message {
+	font: 30px/36px Georgia, "Times New Roman", Times, serif;
+	color: #a4a4a4;
+}
+
+#submit-form input[type="text"] {
+	width: 120px;
+}
+
+#submit-form input[type="submit"] {
+	background: url("subscribe-single.png") no-repeat scroll 0 0 transparent;
+	border: medium none;
+	cursor: pointer;
+	height: 27px;
+	position: relative;
+	top: 2px;
+	text-indent: -9999px;
+	width: 90px;
+}
+
+/* Menu */
+
+#menu {
+	
+}
+
+#menu ul {
+	list-style: none;
+	float: right;
+	margin: 20px 0px 0px 0px;
+}
+
+#menu ul li ul {
+	list-style: none;
+	float: right;
+	margin: 0px;
+	background-color: #FFF;
+}
+
+#menu ul li ul li {
+	font: 15px/21px "Helvetica", Arial, sans-serif;
+	color: #000000;
+	text-decoration: none;
+	padding: 0px 3px 1px 3px;
+}
+
+#menu ul li {
+	margin-right: 15px;
+	display: inline;
+}
+
+#menu ul li a.active {
+	border-bottom: 3px solid #2DA8F8;
+}
+
+#menu ul li {
+	font: 25px/31px "Helvetica", Arial, sans-serif;
+	color: #D2D2D2;
+	text-shadow: 0px 1px 1px #000000;
+	text-decoration: none;
+	padding-bottom: 3px;
+}
+
+#menu ul li a {
+	color: #D2D2D2;
+	text-shadow: 0px 1px 1px #000000;
+	text-decoration: none;
+	padding-bottom: 3px;
+}
+
+ul li.dir:hover {
+	background-color: #FFF;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+}
+
+#menu ul li.last {
+	margin-right: 0px;
+}
+
+/* Side menu */
+
+#sidebar ul {
+	list-style: none outside none;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+#sidebar ul li {
+	padding: 3px 0px 0px 10px;
+	background: url(797.png) no-repeat center left;
+}
+
+/* frame for images */
+
+.frame {
+	float: left;
+	padding: 3px;
+	border: 1px solid #AAAAAA;
+	margin: 0px 10px 10px 0px;
+	-moz-border-radius: 3px;
+}
+
+/* gallery styles */
+
+#gallery .frame:hover {
+	-moz-transform: rotate(-4deg);
+	-webkit-transform: rotate(-4deg);
+}
+
+#gallery br {
+	margin-bottom: 20px;
+}
+
+/*contact form */
+
+input[type="text"] {
+	height: 22px;
+	border: 1px solid #CCCCCC;
+	width: 325px;
+}
+
+#contact_form {
+	margin: 10px 0px;
+	width: 430px;
+}
+
+#contact_form textarea {
+	border: 1px solid #CCCCCC;
+	width: 325px;
+}
+
+#contact_form label {
+	float: left;
+	width: 100px;
+}
+
+#contact_form input[type="submit"] {
+	float: right;
+}
+
+.map {
+	margin: 10px 0px;
+}
+
+/* bullets */
+
+.new-bullets ul {
+	list-style: none outside none;
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+
+.new-bullets ul li {
+	background: url("797.png") no-repeat scroll left center transparent;
+	padding: 3px 0 0 10px;
+}
+
+/* Icons on text homepge */
+
+h1.image-info {
+	background: url(info_button_32.png) no-repeat left center;
+	padding: 10px 0px 0px 40px;
+	height: 32px;
+}
+
+h1.image-search {
+	background: url(search_32.png) no-repeat left center;
+	padding: 10px 0px 0px 40px;
+	height: 32px;
+}
+
+h1.image-home {
+	background: url(home_32.png) no-repeat left center;
+	padding: 10px 0px 0px 40px;
+	height: 32px;
+}
+
+/*
+	Slideshow
+*/
+
+#slides {
+	position:absolute;
+	top:15px;
+	left:4px;
+	z-index:100;
+}
+
+/*
+	Slides container
+	Important:
+	Set the width of your slides container
+	Set to display none, prevents content flash
+*/
+
+.slides_container {
+	overflow:hidden;
+	position:relative;
+	display:none;
+}
+
+/*
+	Each slide
+	Important:
+	Set the width of your slides
+	If height not specified height will be set by the slide content
+	Set to display block
+*/
+
+.slides_container div.slide {
+	width:940px;
+	height:395px;
+	display:block;
+}
+
+/*
+	Next/prev buttons
+*/
+
+#slider .next,#slider .prev {
+	position:absolute;
+	top:200px;
+	left:-34px;
+	width:24px;
+	height:43px;
+	display:block;
+	z-index:101;
+}
+
+#slider .next {
+	left:950px;
+}
+
+/*
+	Pagination
+*/
+
+.pagination {
+	margin:15px auto 0;
+	width:50px;
+}
+
+.pagination li {
+	float:left;
+	margin:0 1px;
+	list-style:none;
+}
+
+.pagination li a {
+	display:block;
+	width:11px;
+	height:0;
+	padding-top:12px;
+	background-image:url(pagination.png);
+	background-position:0 0;
+	float:left;
+	overflow:hidden;
+}
+
+.pagination li.current a {
+	background-position:0 -12px;
+}
+
+/*
+	Caption
+*/
+
+.caption {
+	z-index:500;
+	position:absolute;
+	bottom:-35px;
+	left:0;
+	height:30px;
+	padding:5px 20px 0 20px;
+	background:#000;
+	background:rgba(0,0,0,.5);
+	width:940px;
+	font-size:1.3em;
+	line-height:1.33;
+	color:#fff;
+	/*border-top:1px solid #000; */
+	
+	text-shadow:none;
+}
+
+@import "colorbox";

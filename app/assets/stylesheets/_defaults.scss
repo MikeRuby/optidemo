@@ -1,0 +1,9 @@
+@import "preboot";
+@import "reset";
+@import "grid";
+@import "fonts";
+
+body {
+	background: #272729 url(bg.png) repeat-x top;
+	font: 13px/1.4em "Helvetica", Arial, sans-serif;
+}
