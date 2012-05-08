@@ -10,23 +10,148 @@
 
     <section>
     	<header class="slide">
-    		<h1>Section title</h1>
+    		<h1>Image Compression</h1>
     	</header>
 
     	<section class="slide">
-    		<h2>Slide title</h2>
-    		<p>Slide content</p>
+    		<h2>Optimizing Images</h2>
+    		<p>All imaging software —and especially Adobe Photoshop/Fireworks— output inefficient JPEG and PNG files that waste sometimes even hundreds of kilobytes in needless information. There are a number of tools out there that can losslessly reduce the file size.</p>
+    		<p>Let's talk about what we have available to help us compress images and optimize for the web.</p>
     	</section>
-    </section>
+    	
+    	<section class="slide">
+    		<h2>ImageOptim</h2>
+    		<p>ImageOptim combines multiple PNG (JPEG and Gif) optimization tools into a simple drag-and-drop interface. Everything it does is lossless, based on optimizing the PNG compression parameters and removing excess hidden data (such as EXIF in JPEGs).</p>
+    		<p>Let's talk about what we have available to help us compress images and optimize for the web.</p>
+    		<%= image_tag("image-optim.png") %>
+    		<p class="delayed">An excellent 55% bandwidth savings and all you had to do was drag-and-drop! Good tool for non-programers. A.k.a. Designers! Hahaha!</p>
+    	</section>
+    	
+    	<section class="slide">
+    		<h2>PNGNQ</h2>
+    		<p>If you are feeling extra geeky, then pngnq (http://pngnq.sourceforge.net/) is a command line tool that quantizes 24/32-bit PNG files into near-perfect 8-bit PNGs. The results are stunning. It also maintains full alpha transparency, perfect for website graphics! Website graphics are not usually going to be using as many colors as a photograph so pngnq is perfect for being extra brutal with saving bytes.</p><br />
+    		
+    		<p>Go to http://pngnq.sourceforge.net/pngnqsamples.html to see some examples.</p>
+    	</section>
+    	
+    	<section class="slide">
+    		<h2>Reducing HTTP-Requests</h2>
+    		<p>Bandwidth is not the problem when it comes to speed, even on dial-up. The browser can only do a limited number of simultaneous HTTP requests (usually between 2 and 6). That is the bottleneck that you are fighting against.</p><br />
+    		
+    		<p>By reducing the number of HTTP-requests down to an absolute minimum, you will make the Round-trip time (RTT) almost instantaneous.</p>
+    	</section>
+    	
+    	<section class="slide">
+    		<h2>Reducing HTTP-Requests</h2>
+    		<p class="delayed">Bandwidth is not the problem when it comes to speed, even on dial-up. The browser can only do a limited number of simultaneous HTTP requests (usually between 2 and 6). That is the bottleneck that you are fighting against.</p>
+    		
+    		<p class="delayed">By reducing the number of HTTP-requests down to an absolute minimum, you will make the Round-trip time (RTT) almost instantaneous.</p>
+    		
+    		<p class="delayed">Think of it this way: in a worst case scenario, a single HTTP-request could take up to a second alone if the server is under heavy load or if the bandwidth is already saturated.</p>
+    	</section>
+    	
+    	<section class="slide">
+    		<h2>In Rails...</h2>
+    		<p class="delayed">...we have the Asset Pipeline which provides a framework to concatenate and minify or compress JavaScript and CSS assets. It also adds the ability to write these assets in other languages such as CoffeeScript, Sass and ERB.</p>
+    	</section>
+    	
+    	<section class="slide">
+    		<h2>Well, what about images?</h2>
+    		<p class="delayed">In the Compass section we learnt how to create sprites with ease out of several images.</p>
+    		<p class="delayed">You can gain image performance by optimizing the images you want to add to the Compass Sprite beforehand.</p>
+    	</section>
+    	
+    	<section class="slide">
+    		<h2>Base-64 Encoded Images</h2>
+    		<p class="delayed">The Problem <br />Round-trip time (RTT) is the time it takes for a client to send a request and the server to send a response over the network, not including the time required for data transfer. That is, it includes the back-and-forth time on the wire, but excludes the time to fully download the transferred bytes (and is therefore unrelated to bandwidth). Many web pages require dozens of RTTs - each included css, javascript or image file needs 1 RTT for HTTP request.</p>
+    		<p class="delayed">RTTs vary from less than one millisecond on a LAN to over one second in the worst cases. For small download file sizes (e.g. rounded corner image used as background in css) RTT is the major contributing factor to latency on "fast" (broadband) connections. Therefore, an important strategy for speeding up web page performance is to minimize the number of round trips that need to be made. Since the majority of those round trips consist of HTTP requests and responses, it's especially important to minimize the number of requests that the client needs to make and to parallelize them as much as possible.</p>
+    	</section>
+    	
+    	<section class="slide">
+    		<h2>Enter Base-64 FTW!</h2>
+    		<p>Fortunately and awesomely Compass provides us with Inline Data Helpers.</p>
+    		<p class="delayed">With Compass we can tackle this like so:</p>
+    		<p class="delayed">SCSS</p>
+    		<pre class="delayed">
+$image: "some-image.png";
+.someClass { background: inline-image($image);
+}
+    		</pre>
+    		<p class="delayed">This Embeds the contents of an image directly inside your stylesheet, eliminating the need for another HTTP request.</p>
+    	</section>
+    	
+    	<section class="slide">
+    		<h2>Enter Base-64 FTW!</h2>
+    		<p>CSS</p>
+    		<pre>
+.someClass { background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABkCAMAAACxdeD+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccl
+  0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/CSSIiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1
+  sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4
+  gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIge
+  G1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9
+  Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2gi
+  IHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODVBQkU5NzQ1NjU1MTFFMUFGODdFNTI1QzQwQzYzNkMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODVBQkU5NzU1NjU
+  1MTFFMUFGODdFNTI1QzQwQzYzNkMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowQjAyREI0RDU2NEUxMUUxQUY4N0U1MjVDNDBDNjM2
+  QyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowQjAyREI0RTU2NEUxMUUxQUY4N0U1MjVDNDBDNjM2QyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6e
+  G1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pvv5YQwAAACEUExURcvLy/Pz87CwsImJic/Pz/v7++Tk5K+vr62trd3d3YCAgLGxsaKiot/f38rKyri4uPf398fHx/Dw8Pj4+LW1
+  tenp6ZaWlqurq66uroODg8jIyIuLi5ycnIqKiu/v7/r6+oWFhZubm9jY2KampuHh4ZiYmNLS0tnZ2YSEhH9/f7Kysv///3IN8QsAAACqSURBVHja7NXnDoIwFAXgikXcey/cem7f//
+  2sDV3E8EdRY3qTNvTLpaeEEJh4Uizgn2L/clxucziZAlgdPIzXaA8SbIYu1nCOhZiDuXhFIuduk1xsIHr0L2YKO0zVGHueihNxhXXoulXMOSOD1XLRpu8s8hZl1Rv9+tuUh3yls4zb
+  P7bnd4NC+vvSySAZVGs76U55rYfdU3+v5AXlLEv3rfiJKPw7CvAuwAAQmUbpoWRiDAAAAABJRU5ErkJggg==);
+}
+    		</pre>
+    		<p>The image is embeded directly inside your stylesheet, eliminating the need for another HTTP request.</p>
+    	</section>
+    	
+    	<section class="slide">
+    		<h2>Not using Compass?</h2>
+    		<p class="delayed">The asset pipeline automatically evaluates ERB. This means that if you add an erb extension to a CSS asset (for example, application.css.erb), then helpers like <code>asset_path</code> and <code>asset_data_uri</code> are available in your CSS rules.</p>
+    		<pre class="delayed">
+#logo { 
+  background: url(<&#37;= asset_data_uri 'logo.png' &#37;>); 
+}
+    		</pre>
+    	</section>
+    	
+    	<section class="slide">
+    		<h2>CSS</h2>
+    		<p>The generated code is like so:</p>
+    		<pre>
+#logo { background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABkCAMAAACxdeD+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccl
+  0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/CSSIiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1
+  sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4
+  gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIge
+  G1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9
+  Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2gi
+  IHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODVBQkU5NzQ1NjU1MTFFMUFGODdFNTI1QzQwQzYzNkMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODVBQkU5NzU1NjU
+  1MTFFMUFGODdFNTI1QzQwQzYzNkMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowQjAyREI0RDU2NEUxMUUxQUY4N0U1MjVDNDBDNjM2
+  QyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowQjAyREI0RTU2NEUxMUUxQUY4N0U1MjVDNDBDNjM2QyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6e
+  G1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pvv5YQwAAACEUExURcvLy/Pz87CwsImJic/Pz/v7++Tk5K+vr62trd3d3YCAgLGxsaKiot/f38rKyri4uPf398fHx/Dw8Pj4+LW1
+  tenp6ZaWlqurq66uroODg8jIyIuLi5ycnIqKiu/v7/r6+oWFhZubm9jY2KampuHh4ZiYmNLS0tnZ2YSEhH9/f7Kysv///3IN8QsAAACqSURBVHja7NXnDoIwFAXgikXcey/cem7f//
+  2sDV3E8EdRY3qTNvTLpaeEEJh4Uizgn2L/clxucziZAlgdPIzXaA8SbIYu1nCOhZiDuXhFIuduk1xsIHr0L2YKO0zVGHueihNxhXXoulXMOSOD1XLRpu8s8hZl1Rv9+tuUh3yls4zb
+  P7bnd4NC+vvSySAZVGs76U55rYfdU3+v5AXlLEv3rfiJKPw7CvAuwAAQmUbpoWRiDAAAAABJRU5ErkJggg==);
+}
+    		</pre>
+    	</section>
+    	
+    	<section class="slide">
+    		<h2>Things to keep in mind!</h2>
+    		<p class="delayed">Most browsers support base-64 encoding (IE8+), and IE6 and 7 can be tricked but do not support it natively.</p>
+    		<p class="delayed">Base-64 encoded images are larger than the original file (by a third), but if you have multiple base-64 images in a stylesheet and then GZip the sheet, the overall gains of less HTTP-requests and GZip acting over multiple files combined will far outweigh the size gain converting to base-64. On this site, it’s the difference between 80 KB of CSS + images, and 22.8 KB for one CSS file with the images inside.</p>
 
-    <section class="slide">
-    	<h2>Thank you!</h2>
-    	<p>Closing remarks</p>
+        <p class="delayed">Because of the increase in data size with base-64, it is vital that you optimize the images you are converting as much as possible—every single byte counts. Combine ImageOptim, PNGNQ, base-64 encoding and GZip and you will defy the very Interwebz Gods with your insane levels of compression.</p>
+    	</section>
+    
     </section>
+    
+    <section>
+      <header class="slide">
+      	<h1>Thank you!</h1>
+      </header>
+    </section>
+    
   </div>
   <div class="clear"></div>
 </div>
  <!-- End of Main Section -->
 
-<script src="assets/lib/keynote_slideshow.js"></script>
-<script>var slideshow = new SlideShow();</script>
+<%= render partial: "shared/slideshow-js" %>
