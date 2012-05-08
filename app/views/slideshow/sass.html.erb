@@ -1,2 +1,34 @@
-<h1>Slideshow#sass</h1>
-<p>Find me in app/views/slideshow/sass.html.erb</p>
+<% stylesheets "slideshows" %>
+
+<%= render partial: "shared/header" %>
+<div class="clear"></div>
+ <!-- Main Section -->
+<div id="content">
+  <div class="container_12">
+    <section id="intro" class="slide">
+    	<h1 class="sass">Sass 101</h1>
+    	<p class="attribution">By Mike .V - @emikebr</p>
+    </section>
+
+    <section>
+    	<header class="slide">
+    		<h1>Section title</h1>
+    	</header>
+
+    	<section class="slide">
+    		<h2>Slide title</h2>
+    		<p>Slide content</p>
+    	</section>
+    </section>
+
+    <section class="slide">
+    	<h2>Thank you!</h2>
+    	<p>Closing remarks</p>
+    </section>
+  </div>
+  <div class="clear"></div>
+</div>
+ <!-- End of Main Section -->
+
+<script src="assets/lib/keynote_slideshow.js"></script>
+<script>var slideshow = new SlideShow();</script>

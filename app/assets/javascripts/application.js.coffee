@@ -1,7 +1,8 @@
 #= require jquery
-#= require jquery_ujs
+#= require lib/modernizr-2.5.3.min
 #= require lib/cufon
-#= require_tree .
+#= require lib/TeXGyreAdventor_400.font
+#= require lib/slides.min.jquery
 
 Cufon.replace "h1,h2,h3,h4"
 Cufon.replace "#menu #nav li"
