@@ -10,18 +10,41 @@
 
     <section>
     	<header class="slide">
-    		<h1>Section title</h1>
+    		<h1>Work & Play</h1>
     	</header>
 
     	<section class="slide">
-    		<h2>Slide title</h2>
-    		<p>Slide content</p>
+    		<h2>What's wrong with CSS?</h2>
+    		<p class="delayed">&ldquo;Anybody who’s built a website of any size knows how quickly CSS can get out of hand. Style sheets can grow bloated and lengthy, 
+          making it difficult to find things, introducing redundancy and producing an end product that makes code maintenance tedious. 
+          Let’s face it — CSS is not very well-designed.&rdquo; - <%= link_to("Mashable", "http://mashable.com/2011/06/14/compass-css-guide/") %></p>
+          <ul>
+      			<li class="delayed">Bloated and lengthy</li>
+      			<li class="delayed">Difficult to find selectors</li>
+      			<li class="delayed">Redunancy - Non-DRY</li>
+      			<li class="delayed">It becomes tedious to maintain</li>
+      		</ul> 
+    	</section>
+    	<section class="slide">
+    	  <h2>Sass FTW!</h2>
+    	  <p class="delayed">&ldquo;Sass is a meta-language on top of CSS that’s used to describe the style of a document cleanly and structurally, with more power than flat CSS allows. Sass both provides a simpler, more elegant syntax for CSS and implements various features that are useful for creating manageable stylesheets.&ldquo; - Sass website</p>
+    	  <ul>
+    			<li class="delayed">Variables</li>
+    			<li class="delayed">Scoping through Sass nesting</li>
+    			<li class="delayed">Mixins - Remember DRY?</li>
+    			<li class="delayed">Math functions for manipulating colors and other values</li>
+    		</ul>
+    	</section>
+    	<section class="slide">
+    	  <h2>Sass modular strategy</h2>
+  			<p>Use partials to create modules:
+  			  <%= image_tag("textmate_sass_modules.png") %></p>
     	</section>
     </section>
 
     <section class="slide">
-    	<h2>Thank you!</h2>
-    	<p>Closing remarks</p>
+    	<h2>So...</h2>
+    	<p>Sass is an extension of CSS that adds power and elegance to the basic language. It allows you to use variables, nested rules, mixins, inline imports, all with a fully CSS-compatible syntax. Sass helps keep large stylesheets well-organized, and get small stylesheets up and running quickly, particularly with the help of the Compass style library.</p>
     </section>
   </div>
   <div class="clear"></div>
