@@ -10,18 +10,147 @@
 
     <section>
     	<header class="slide">
-    		<h1>Section title</h1>
+    		<h1>Compass 101</h1>
     	</header>
 
     	<section class="slide">
-    		<h2>Slide title</h2>
-    		<p>Slide content</p>
+    		<h2>What is Compass?</h2>
+    		<p class="delayed">Compass is an open source CSS authoring framework written in Ruby that attempts to fix a lot of the shortcomings of CSS. It also streamlines development by providing a number of utilities and tools to make writing your CSS files easier and faster.</p>
+    		<p class="delayed">And most important...</p>
+    		<p class="delayed">Compass uses Sass!</p>
     	</section>
+    
+    	<section class="slide">
+    		<h2>Why Compass?</h2>
+    		<ul>
+    		  <li class="delayed">Experience cleaner markup without presentational classes.</li>
+    		  <li class="delayed">It’s chock full of the web’s best reusable patterns.</li>
+    		  <li class="delayed">It makes creating sprites a breeze.</li>
+    		  <li class="delayed">Supports Inline Data through base64. - More on this in Asset Optimization.</li>
+    		  <li class="delayed">Compass mixins make CSS3 easy. - No need to worry about vendor prefixes.</li>
+    		  <li class="delayed">Create beautiful typographic rhythms.</li>
+    		  <li class="delayed">You can create your own Compass extensions.</li>
+    		</ul>
+    	</section>
+    	
+    	<section class="slide">
+    		<h2>How Does COMPASS Work?</h2>
+    		<p>Now that we’ve gone over what COMPASS is and discussed a few of its features, let’s take a look at some of them in action.</p>
+    	</section>
+    
+    	<section class="slide">
+    		<h2>Compass CSS3</h2>
+    		<p>SCSS</p>
+    		<pre>
+@import "compass/css3";
+.box { 
+  @include border-radius(8px); 
+  @include background (linear-gradient(#000, #333));
+}.
+    		</pre>
+    	</section>
+    	
+    	<section class="slide">
+    		<h2>CSS3</h2>
+    		<p>CSS</p>
+    		<pre>
+.box { 
+  -moz-border-radius: 8px; 
+  -webkit-border-radius: 8px; 
+  -ms-border-radius: 8px; 
+  border-radius: 8px; 
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%,color-stop(0%, #000000), color-stop(100%, #333333)); 
+  background: -webkit-linear-gradient(#000000, #333333); 
+  […] // Vender prefixes omitted to save space, but you get the idea. - Mike
+  background: linear-gradient(#000000, #333333);
+}
+    		</pre>
+    	</section>
+    	
+    	<section class="slide">
+    		<h2>Image Dimension Helpers</h2>
+    		<p>SCSS</p>
+    		<pre>
+@import "compass";
+$image: "logo.jpg";
+header { 
+  background: image-url($image); 
+  h1 { 
+    width: image-width($image); 
+    height: image-height($image); 
+  }
+}
+    		</pre>
+    	</section>
+
+    	<section class="slide">
+    		<h2>Image Dimension Helpers</h2>
+    		<p>CSS</p>
+    		<pre>
+header { 
+  background: url(/assets/logo-92abef214666bab574edece3.jpg);
+}
+header h1 { 
+  width: 346px; 
+  height: 400px;
+}
+    		</pre>
+    	</section>
+    	
+    	<section class="slide">
+    		<h2>Spriting with Compass</h2>
+    		<p>Spriting has never been easier with Compass. You place the sprite images in a folder, import them into your stylesheet, and then you can use the sprite in your selectors in one of several convenient ways.</p>
+    	</section>
+
+    	<section class="slide">
+    		<h2>Spriting with Compass</h2>
+    		<p>So let's imagine that in your project's image folder there are these icons:</p>
+        <code>assets/images/social/fb.png</code><br />
+        <code>assets/images/social/twitter.png</code><br />
+        <code>assets/images/social/LinkedIn.png</code><br />
+        <code>assets/images/social/gplus.png</code><br />
+        <code>assets/images/social/email.png</code><br />
+        <code>assets/images/social/rss.png</code>
+        <p>Each is an icon that is 32px square.</p>
+    	</section>
+    	
+    	<section class="slide">
+    		<h2>Spriting with Compass</h2>
+    		<p>SCSS</p>
+    		<pre>
+@import "compass";
+@import "social/*.png";
+@include all-social-sprites($dimensions:true); 
+    		</pre>
+    	</section>
+
+    	<section class="slide">
+    		<h2>Spriting with Compass</h2>
+    		<p>CSS</p>
+    		<pre>
+.social-sprite, .social-fb, .social-twitter, .social-LinkedIn, etc... {
+  background: url(/assets/social-92abef214666bab574edece3.png); no-repeat;
+}
+.social-fb { 
+  background-position: 0 0; 
+  height: 32px; 
+  width: 32px;
+}
+.social-twitter { 
+  background-position: -15px 0; 
+  height: 32px; 
+  width: 32px;
+}
+    		</pre>
+    	</section>
+  	
     </section>
+  
 
     <section class="slide">
-    	<h2>Thank you!</h2>
-    	<p>Closing remarks</p>
+    	<h2>last but not least...</h2>
+    	<p>To really get into Sass and Compass I recommend you take a look at Pragmatic Guide to Sass.</p>
+    	<%= image_tag("pragmatic-Guide-to-Sass.jpg") %>
     </section>
   </div>
   <div class="clear"></div>
